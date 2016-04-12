@@ -23,5 +23,4 @@
 	<context:component-scan base-package="by.topolev.twitter" />
 	
 	
-	
 </beans:beans>

@@ -27,8 +27,13 @@ body{
 	position:absolute;
 	right:0px;
 	font-size: 20px;
-	color:red;
 	line-height:40px;
+}
+.no-error{
+	color: rgb(0,128,0);
+}
+.error{
+	color: red;
 }
 .text-error{
 	min-height:34px;
