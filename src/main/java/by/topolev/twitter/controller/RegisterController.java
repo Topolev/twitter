@@ -36,7 +36,7 @@ public class RegisterController {
 	@RequestMapping(value="user/controlusername", method = RequestMethod.GET)
 	@ResponseBody
 	public String controlUsername(@RequestParam(value="username") String username){
-		if (username.equals("leo")) return "Username already exists";
-		return "JKGJ";
+		if (username.equals("leo")) return "yes";
+		return "no";
 	}
 }

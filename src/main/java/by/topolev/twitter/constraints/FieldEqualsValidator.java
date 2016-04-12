@@ -24,7 +24,8 @@ public class FieldEqualsValidator implements ConstraintValidator<FieldEquals, Ob
 		final Object equalsToObject = getProperty(value, equalsTo, null);
 		
 
-		boolean matches = (fieldObject != null) && fieldObject.equals(equalsToObject);
+		boolean matches = ((fieldObject != null) && (fieldObject.equals(equalsToObject)) && (!fieldObject.equals("")));
+		System.out.println("field: '" + fieldObject + "'");
 		System.out.println("VALIDATION " + matches);
 		if (!matches){
 			String msg = field + " is not equal to " + equalsTo;

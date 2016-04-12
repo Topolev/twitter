@@ -25,13 +25,16 @@ public class User {
 	@Size(min=3, max=10)
 	private String username;
 	
-	
+	@NotBlank
+	@Size(min=3, max=10)
 	private String password;
 	
 	@Transient
 	private String confirmPassword;
 	
 	
+	@NotBlank
+	@Email
 	private String email;
 	private String phone;
 	private String firstName;

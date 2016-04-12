@@ -23,56 +23,138 @@
 	<div id="wrap-login">
 		<form:form method="POST" commandName="user" id="register">
 			<h1>Create your personal account</h1>
-			
+
+
+
 			<spring:hasBindErrors name="user">
-				${errors.hasFieldErrors("userName")? 'true':'false'}
+
+				<c:set var="errorUsername" value="no-error" />
+				<c:if test="${errors.hasFieldErrors('username')}">
+					<c:set var="errorUsername" value="has-error" />
+				</c:if>
+
+				<c:set var="errorEmail" value="no-error" />
+				<c:if test="${errors.hasFieldErrors('email')}">
+					<c:set var="errorEmail" value="has-error" />
+				</c:if>
+
+				<c:set var="errorPassword" value="no-error" />
+				<c:if test="${errors.hasFieldErrors('password')}">
+					<c:set var="errorPassword" value="has-error" />
+				</c:if>
+
+				<c:set var="errorConfirmPassword" value="no-error" />
+				<c:if test="${errors.hasFieldErrors('confirmPassword')}">
+					<c:set var="errorConfirmPassword" value="has-error" />
+				</c:if>
 			</spring:hasBindErrors>
-			
-			<div class="form-group">
+
+
+
+
+
+			<div class="form-group ${errorUsername}">
 				<form:label path="username">Username:</form:label>
 				<div class="row">
-					<div class="col-md-9">
-						<form:input path="username" cssClass="form-control"
-							placeholder="Username" />
-						<p class="help-block">This will be your username. This field
-							shoul consist 3-10 character.</p>
+					<div class="col-md-6">
+						<div class="input-field">
+							<form:input path="username" cssClass="form-control" id="username"
+								placeholder="Username" />
+							<c:if test="${errorUsername.equals('has-error')}">
+								<span class="glyphicon glyphicon-remove error"
+									aria-hidden="true"></span>
+							</c:if>
+							<c:if test="${errorUsername.equals('no-error')}">
+								<span class="glyphicon glyphicon-ok no-error" aria-hidden="true"></span>
+							</c:if>
+						</div>
 					</div>
-					<div class="col-md-3">
-						<span><form:errors path="username" /></span>
-
-						<form:errors path="username"></form:errors>
-
-
-						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-
+					<div class="col-md-6">
+						<div class="text-error table" id="username-error">
+							<span class="table-cell"> <span><form:errors
+										path="username" /></span>
+							</span>
+						</div>
 					</div>
 				</div>
-
-
 			</div>
 
-			<div class="form-group">
+			<div class="form-group ${errorEmail}">
 				<form:label path="email">Email</form:label>
-				<form:input path="email" id="email" cssClass="form-control"
-					placeholder="Email@example.com" />
-				<p class="help-block">You will occasionally receive account
-					related emails. We promise not to share your email with anyone.</p>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-field">
+							<form:input path="email" id="email" cssClass="form-control"
+								placeholder="Email@example.com" />
+							<c:if test="${errorEmail.equals('has-error')}">
+								<span class="glyphicon glyphicon-remove error"
+									aria-hidden="true"></span>
+							</c:if>
+							<c:if test="${errorEmail.equals('no-error')}">
+								<span class="glyphicon glyphicon-ok no-error" aria-hidden="true"></span>
+							</c:if>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="text-error table">
+							<span class="table-cell"> 
+								<span><form:errors path="email" /></span>
+							</span>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group ${errorPassword}">
 				<form:label path="password">Password:</form:label>
-				<form:password path="password" id="password" cssClass="form-control"
-					placeholder="Password" />
-				<p class="help-block">Use at least one lowercase letter, one
-					numeral, and seven characters.</p>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-field">
+							<form:password path="password" id="password"
+								cssClass="form-control" placeholder="Password" />
+							<c:if test="${errorPassword.equals('has-error')}">
+								<span class="glyphicon glyphicon-remove error"
+									aria-hidden="true"></span>
+							</c:if>
+							<c:if test="${errorPassword.equals('no-error')}">
+								<span class="glyphicon glyphicon-ok no-error" aria-hidden="true"></span>
+							</c:if>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="text-error table">
+							<span class="table-cell"> 
+								<span> <form:errors path="password" /></span>
+							</span>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group ${errorConfirmPassword}">
 				<form:label path="confirmPassword">Confirm password:</form:label>
-				<form:password path="confirmPassword" cssClass="form-control"
-					placeholder="ConfirmPassword" />
-				<p class="help-block">This field will be same field Password</p>
-				<span><form:errors path="confirmPassword" /></span>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-field">
+							<form:password path="confirmPassword" cssClass="form-control"
+								placeholder="ConfirmPassword" />
+							<c:if test="${errorConfirmPassword.equals('has-error')}">
+								<span class="glyphicon glyphicon-remove error"
+									aria-hidden="true"></span>
+							</c:if>
+							<c:if test="${errorConfirmPassword.equals('no-error')}">
+								<span class="glyphicon glyphicon-ok no-error" aria-hidden="true"></span>
+							</c:if>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="text-error table">
+							<span class="table-cell"> 
+								<span> <form:errors path="confirmPassword" /></span>
+							</span>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<form:button id="signup" class="btn btn-success">Create an account</form:button>
@@ -95,7 +177,10 @@
 			return false;
 		})
 	})
-
+	$("#username").on('blur', function(){
+		searchSameUsername();
+		enableSearchButton(false);
+	});
 	function searchSameUsername() {
 
 		$.ajax({
@@ -105,13 +190,20 @@
 			data : "username=" + $(username).val(),
 			timeout : 100000,
 			success : function(data) {
-				console.log("SUCCESS: ", data);
+				if (data == "yes"){
+					$("#username").parent().append("<span class='glyphicon glyphicon-remove error' aria-hidden='true'></span>");
+					$("#username-error .table-cell").html("<span>username already excite</span>");
+				} else{
+					$("#username").parent().find('span').remove();
+					$("#username-error .table-cell").html("");
+				}
 			},
 			error : function(e) {
 				console.log("ERROR: ", e);
 			},
 			done : function(e) {
 				console.log("DONE");
+				alert("DONE");
 				enableSearchButton(true);
 			}
 		})

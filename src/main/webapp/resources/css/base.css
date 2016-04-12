@@ -13,7 +13,39 @@ body{
 	padding:10px;
 }
 #wrap-login{
-	
 	max-width:1000px;
 	margin: 0 auto;
+}
+.input-field{
+	padding-right:30px;
+	position:relative;
+}
+.input-field input{
+	height:40px;
+}
+.input-field span{
+	position:absolute;
+	right:0px;
+	font-size: 20px;
+	color:red;
+	line-height:40px;
+}
+.text-error{
+	min-height:34px;
+	height:1px;
+	color:red;
+}
+.table{
+	display:table;
+	margin:0;
+}
+.table-cell{
+	display:table-cell;
+	vertical-align: middle;
+}
+.error{
+	color:red;
+}
+.no-error{
+	color:green;
 }

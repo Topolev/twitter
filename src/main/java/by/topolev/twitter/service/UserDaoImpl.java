@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import by.topolev.twitter.domain.User;
 
-@Service(value="userDao")
+//@Service(value="userDao")
 @Transactional
 public class UserDaoImpl extends GenericDaoImpl<User, Long> implements UserDao{
 
