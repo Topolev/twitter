@@ -1,10 +1,10 @@
-package by.topolev.twitter.controller;
+package by.topolev.twitter.web.controller;
 
 import javax.validation.Valid;
 
+import by.topolev.twitter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import by.topolev.twitter.domain.User;
-import by.topolev.twitter.service.UserDao;
+import by.topolev.twitter.dao.UserDao;
 @Controller
 public class RegisterController {
 	
 	@Autowired
-	private UserDao userDao;
+	private UserService userService;
 	
 	@RequestMapping(value = "user/register", method = RequestMethod.GET)
 	public String formRegister(Model model){
@@ -34,7 +34,7 @@ public class RegisterController {
 		if (result.hasErrors()){
 			return "user/register";
 		}
-		userDao.create(user);
+		userService.create(user);
 		return "redirect:/";
 	}
 	

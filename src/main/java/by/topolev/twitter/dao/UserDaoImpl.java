@@ -1,13 +1,13 @@
-package by.topolev.twitter.service;
+package by.topolev.twitter.dao;
 
 import javax.persistence.TypedQuery;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import by.topolev.twitter.domain.User;
 
-@Service(value="userDao")
+@Repository(value="userDao")
 @Transactional
 public class UserDaoImpl extends GenericDaoImpl<User, Long> implements UserDao{
 

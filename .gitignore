@@ -1,1 +1,11 @@
 /target/
+/.idea/compiler.xml
+/.idea/copyright
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/uiDesigner.xml
+/.idea/artifacts
+/.idea/workspace.xml
+/.idea/libraries
+/.idea
